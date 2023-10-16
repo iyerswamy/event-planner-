@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-image: url(assets/babyshowerbg01.jpg);
+            background-size: cover;
+        }
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            font-size: 26px;
+
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+
+
+        }
+
+        .row img {
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+            margin: 1px;
+        }
+
+        /*new*/
+        #fh5co-gallery-list {
+            flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+            -moz-flex-wrap: wrap;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            position: relative;
+            float: left;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        #fh5co-gallery-list li {
+            display: block;
+            padding: 0;
+            margin: 0 0 10px 1%;
+            list-style: none;
+            min-height: 400px;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            float: left;
+            clear: left;
+            position: relative;
+            -webkit-border-radius: 7px;
+            -moz-border-radius: 7px;
+            -ms-border-radius: 7px;
+            border-radius: 7px;
+        }
+
+       @media screen and (max-width: 480px) {
+            #fh5co-gallery-list li {
+                margin-left: 0;
+            }
+        }
+
+        #fh5co-gallery-list li a {
+            min-height: 400px;
+            padding: 2em;
+            position: relative;
+            width: 100%;
+            display: block;
+        }
+
+        #fh5co-gallery-list li a:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: "";
+            z-index: 80;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            -webkit-border-radius: 7px;
+            -moz-border-radius: 7px;
+            -ms-border-radius: 7px;
+            border-radius: 7px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        #fh5co-gallery-list li a:hover:before {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        #fh5co-gallery-list li a .case-studies-summary {
+            width: auto;
+            bottom: 2em;
+            left: 2em;
+            right: 2em;
+            position: absolute;
+            z-index: 100;
+        }
+
+        @media screen and (max-width: 768px) {
+            #fh5co-gallery-list li a .case-studies-summary {
+                bottom: 1em;
+                left: 1em;
+                right: 1em;
+            }
+        }
+
+        #fh5co-gallery-list li a .case-studies-summary span {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #fh5co-gallery-list li a .case-studies-summary h2 {
+            color: #fff;
+            margin-bottom: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            #fh5co-gallery-list li a .case-studies-summary h2 {
+                font-size: 20px;
+            }
+        }
+
+        #fh5co-gallery-list li.one-third {
+            width: 32.3%;
+        }
+
+        @media screen and (max-width: 768px) {
+            #fh5co-gallery-list li.one-third {
+                width: 49%;
+            }
+        }
+
+       @media screen and (max-width: 480px) {
+            #fh5co-gallery-list li.one-third {
+                width: 100%;
+            }
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            position: relative;
+        }
+
+        @media screen and (max-width: 768px) {
+            #map {
+                height: 200px;
+            }
+        }
+
+
+        .heading span {
+            color: #3867d6;
+            text-transform: uppercase;
+        }
+
+        .heading {
+            text-align: center;
+            padding-bottom: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 4rem;
+        }
+
+        .heading span {
+            color: #3867d6;
+            text-transform: uppercase;
+        }
+
+        .pricing-table {
+
+            width: 300px;
+            border-radius: 25px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555555;
+            margin: 15px;
+        }
+
+        .pricing-table--highlighted {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        .phead {
+            padding: 20px;
+            background-color: #3867d6;
+            color: #fff;
+        }
+
+        .psum {
+            margin: 0;
+            text-align: center;
+        }
+
+        .ptitle {
+            margin: 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 400;
+        }
+
+        .psum {
+
+            font-size: 1em;
+            font-weight: 300;
+        }
+
+        .pcontent {
+            padding: 25px;
+            background-color: beige;
+
+
+        }
+
+        .plist {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .pfeature {
+            list-style: none;
+            margin: 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1em;
+            margin-bottom: 2px;
+
+        }
+
+        .pfeature::before {
+            content: "\2714";
+            color: black;
+            left: 0;
+            position: absolute;
+
+        }
+
+        .pcost {
+            padding: 25px;
+            border-top: 1px solid #897e7e;
+            display: flex;
+            flex-direction: column;
+            background-color: beige;
+
+        }
+
+        .pp {
+            text-align: center;
+            margin: 0;
+            font-size: 2em;
+            color: #000000;
+
+        }
+
+        .button {
+            display: inline-block;
+            margin: 15px auto;
+            padding: 8px 20px;
+            text-decoration: none;
+            border: 4px solid #222;
+            border-radius: 15px;
+            color: #fff;
+            background: #3867d6;
+            font-weight: bolder;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+
+        }
+        .pricing-plan-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        
+        .regform {
+            width: 800px;
+
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            background-color: rgba(0, 0, 0, 6);
+            border-radius: 15px 15px 0px 0px;
+            padding: 10px 0px 10px 0px;
+            margin: auto;
+        }
+
+        .main {
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 800px;
+            margin: auto;
+        }
+
+        form {
+            padding: 10px;
+        }
+
+        .name {
+            width: 125px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+
+        .fname {
+            position: relative;
+            line-height: 30px;
+            left: 150px;
+            top: -28px;
+            border-radius: 6px;
+            padding: 2px 20px;
+            font-size: 16px;
+            width: 400px;
+
+
+        }
+
+        .email {
+            position: relative;
+            left: 150px;
+            top: -25px;
+            line-height: 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            padding: 2px 20px;
+            width: 400px;
+        }
+
+        .cno {
+            position: relative;
+            left: 150px;
+            top: -22px;
+            line-height: 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            padding: 2px 20px;
+            width: 200px;
+        }
+
+        .tt {
+            border-radius: 6px;
+            font-size: 16px;
+            padding: 2px 22px;
+            margin-top: 20px;
+            height: 100px;
+        }
+
+        .dd {
+            border-radius: 6px;
+            font-size: 16px;
+            margin-top: 20px;
+            height: 50px;
+            padding-left: 5px;
+            width: 180px;
+
+        }
+
+        .option {
+            border-radius: 6px;
+            font-size: 15px;
+            padding: 0 10px;
+            width: 220px;
+
+        }
+
+        .inputbox {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .inputbox1 {
+            display: flex;
+            flex: wrap;
+
+        }
+
+        .namet {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-right: 20px;
+
+        }
+
+
+        .button {
+
+            text-align: center;
+            justify-content: center;
+        }
+
+        .pricing-plan-special-text{
+            padding: 10px;
+            text-align: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+            background: #1f47a6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
+        }
+    </style>
+</head>
+
+<body>
+    <!--<header id="header" class="header" role="banner" style="background-image:url(images/wimg7.jpg);">
+		<div class="overlay"></div>
+		<div class="fh5co-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Happy Wedding</h1>
+							<h2>And they live happily <a href="http://freehtml5.co" target="_blank">Ever After</a></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>-->
+    <header>
+        <div class="header">
+            <div class="overlay">
+                <h1></h1>
+                <h2></a></h2>
+
+
+            </div>
+        </div>
+    </header>
+    <!--images section-->
+
+    <!--<h2 class="text-center text-warning"> IMAGE-GALLERY</h2>
+        <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-4 col-12">
+                <img src="images/wimg1.jpg" class="img-fluid ">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg2.jpg" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg3.jpg" class="img-fluid">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg4.jpg" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg5.jpg" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg6.jpg" class="img-fluid">
+            </div>    
+        </div>  
+        <br>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg7.jpg" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg8.jpg" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <img src="images/wimg9.jpg" class="img-fluid">
+            </div>    
+        </div>    
+    </div>-->
+
+    <div id="fh5co-gallery" class="fh5co-section-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+                    <span>Our Memories</span>
+                    <h2>Babyshower Gallery</h2>
+                    <p> Wishing all the best for you and your baby-to-be.</p>
+                </div>
+            </div>
+            <div class="row row-bottom-padded-md">
+                <div class="col-md-12">
+                    <ul id="fh5co-gallery-list">
+
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower1.jpg); ">
+                            <a href="assets/babyshowerbg01.jpg">
+                                <div class="case-studies-summary">
+                                   
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower2.jpg); ">
+                            <a href="#" class="color-2">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower3.jpg); ">
+                            <a href="#" class="color-3">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower4.jpg); ">
+                            <a href="#" class="color-4">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower5.jpg); ">
+                            <a href="#" class="color-3">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower6.jpg); ">
+                            <a href="#" class="color-4">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower7.jpg); ">
+                            <a href="#" class="color-4">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower8.jpg); ">
+                            <a href="#" class="color-5">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="one-third animate-box" data-animate-effect="fadeIn"
+                            style="background-image: url(assets/babyshower9.jpg); ">
+                            <a href="#" class="color-6">
+                                <div class="case-studies-summary">
+                                    
+                                    <h2></h2>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+     <!--PLANS-->
+
+     <section class="pl" id="plan">
+        <h2 class="heading">OUR <span>SERVICES</span></h2>
+        <div class="pricing-plan-container">
+
+            <section class="pricing-table pricing-table--highlighted">
+                <div class="phead">
+                    <h1 class="ptitle">Ultimate Plan</h1>
+                    
+
+                </div>
+                <div class="pcontent">
+                    <ul class="plist">
+                        <li class="pfeature">Unique and Stunning Themes and Decorations</li>
+                        <li class="pfeature">Furniture with required lights arrangements</li>
+                        <li class="pfeature">Lights DJ Music systems</li>
+                        <li class="pfeature">Catering Recommendations and Menu Development</li>
+                        <li class="pfeature">Unique Entertainment and Games</li>
+                        <li class="pfeature">Photography</li>
+                        <li class="pfeature">Return Gifts</li>
+                        <li class="pfeature">Stage Set-up</li>
+                    </ul>
+                </div>
+                <div class="pcost">
+                    <p class="pp">₹50k
+                    </p>
+                   
+                    <a href="babyshowerinfo.html" class="button">purchase</a>
+                    
+                </div>
+            </section>
+
+
+
+
+            <section class="pricing-table pricing-table--highlighted">
+                <div class="pricing-plan-special-text">Recommended</div>
+                <div class="phead">
+                    <h1 class="ptitle">Basic Plan</h1>
+                   
+                </div>
+                <div class="pcontent">
+                    <ul class="plist">
+                        <li class="pfeature">Unique and Stunning Themes and Decorations</li>
+                        <li class="pfeature">Furniture with required lights arrangements</li>
+                        <li class="pfeature">Lights,DJ Music systems</li>
+                        <li class="pfeature">Catering Recommendations and Menu Development</li> 
+                        <li class="pfeature">Stage set-up</li>
+                    </ul>
+                </div>
+                <div class="pcost">
+                    <p class="pp">₹30k
+                    </p>
+                    <a href="babyshowerinfo.html" class="button">purchase</a>
+                   
+                </div>
+            </section>
+
+
+
+
+
+            <section class="pricing-table pricing-table--highlighted">
+                <div class="phead">
+                    <h1 class="ptitle">Premium Plan</h1>
+
+
+                </div>
+                <div class="pcontent">
+                    <ul class="plist">
+                        <li class="pfeature">Unique and Stunning Themes and Decorations</li>
+                        <li class="pfeature">Furniture with required lights arrangements</li>
+                        <li class="pfeature">Lights,DJ Music systems</li>
+                        <li class="pfeature">Photography and Videography</li>
+                        <li class="pfeature">Return Gifts</li>
+                        <li class="pfeature">Cradle Decoration</li>
+                        <li class="pfeature">Unique Entertainment and Games</li>
+                        <li class="pfeature">Catering Recommendations and Menu Development</li>
+                        <li class="pfeature">Balloons Arrangement</li>
+                        <li class="pfeature">Stage set-up</li>
+                    </ul>
+                </div>
+                <div class="pcost">
+                    <p class="pp">₹80k
+                    </p>
+                    
+                    <a href="babyshowerinfo.html" class="button">purchase</a>
+                   
+                </div>
+            </section>
+        </div>
+
+    </section>
+
+
+
+    <!--FORM BEGINS-->
+    <!-- <section class="ff" id="ff">
+
+        <h2 class="heading">OUR <span>FORM</span></h2>
+
+        <div class="regform">
+            <h1>Registration form</h1>
+        </div>
+        <div class="main">
+            <form>
+                <div id="name">
+                    <h2 class="name">Name :</h2>
+                    <input class="fname" type="text" name="fname" placeholder="Fullname">
+                </div>
+
+                <h2 class="name">Email-id :</h2>
+                <input class="email" type="text" name="Email-id" placeholder="email-id">
+
+                <h2 class="name">Contact-No :</h2>
+                <input class="cno" type="text" name="Contact-No" placeholder="contact-no">
+
+
+                <div class="namet">
+                    <div class="inputbox">
+
+                        <h2 class="name">No-Of-Guest-Attending :</h2>
+                        <select class="option" name="guests">
+                            <option disabled="disabled" selected="selected">--Choose option--</option>
+                            <option>Above 50-Below 200</option>
+                            <option>Above 250-Below 500</option>
+                            <option>Above 500-Below 1000</option>
+                            <option>Above 1000-Below 2000</option>
+                            <option>Above 2000</option>
+
+                        </select>
+                    </div>
+
+
+
+                    <div class="inputbox">
+                        <h2 class="name">Choose plan :</h2>
+
+                        <select class="option" name="guests">
+                            <option disabled="disabled" selected="selected">--Choose plan--</option>
+                            <option>Basic plan</option>
+                            <option>Premium plan</option>
+                            <option>Ultimate plan</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="namet">
+                    <div class="inputbox">
+                        <h2 class="name">Type your message here :</h2>
+                        <textarea class="tt" placeholder="Your message"></textarea>
+
+                    </div>
+                    <div class="inputbox1">
+                        <h2 class="name">choose date for your event :</h2>
+                        <input type="date" name="date" class="dd">
+                    </div>
+
+
+
+                    <input type="submit" class="button" value="REGISTER">
+
+                </div>
+
+
+
+
+            </form>
+
+
+
+
+        </div>
+    </section> -->
+
+</body>
+
+</html>
